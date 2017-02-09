@@ -1,0 +1,129 @@
+bower install ng-mask --save
+
+
+angular.module('app', ['ngMask'])
+
+MASK: 39/19/9999
+<input type="text" name="date" mask="39/19/9999" ng-model="date">
+
+
+MASK: 39/19/9999 CLEAN: TRUE
+<input type="text" name="date1" mask="39/19/9999" clean="true" ng-model="date1">
+
+
+MASK: 39/19/9999 CLEAN: FALSE
+<input type="text" name="date2" mask="39/19/9999" clean="false" ng-model="date2">
+
+
+MASK: 19/39/9999 RESTRICT: REJECT
+<input type="text" name="date" mask="19/39/9999" restrict="reject"" ng-model="date4">
+
+
+MASK: 19/39/9999 RESTRICT: REJECT CLEAN: TRUE
+<input type="text" name="date5" mask="19/39/9999" restrict="reject"" clean="true" ng-model="date5">
+
+
+MASK: 19/39/9999 RESTRICT: ACCEPT CLEAN: TRUE
+<input type="text" name="date6" mask="19/39/9999" restrict="accept"" clean="true" ng-model="date6">
+
+
+
+
+Phone example
+
+MASK: (999) 999-9999 CLEAN: TRUE
+<input type="text" name="phone" mask="(999) 999-9999" clean="true" ng-model="phone">
+
+
+MASK: (99) 9?9999-9999
+<input type="text" name="phone2" mask="(99) 9?9999-9999" ng-model="phone2">
+
+
+MASK: +99 99 9?9999-9999 RESTRICT: REJECT
+<input type="text" name="phone3" mask="+99 99 9?9999-9999" restrict="reject" ng-model="phone3">
+
+
+
+String example
+
+
+MASK: % REPEAT: 30 RESTRICT: REJECT
+ <input type="text" name="name0" mask="%" repeat="30" restrict="reject" ng-model="name0">
+
+
+ MASK: 95?5?.? REPEAT: 4 CLEAN: TRUE
+ <input type="text" name="ip2" mask="95?5?" repeat="4" clean="true" ng-model="ip2">
+
+
+ MASK: 255.255.255.255
+ <input type="text" name="ip3" mask="255.255.255.255" ng-model="ip3">
+
+
+ CPF example
+
+
+ MASK: 999.999.999-99
+ <input type="text" name="cpf1" mask="999.999.999-99" ng-model="cpf1">
+
+
+ MASK: 999.999.999-99 CLEAN: TRUE
+ <input type="text" name="cpf3" mask="999.999.999-99" clean="true" ng-model="cpf3">
+
+
+ MASK: 999.999.999-99 CLEAN: FALSE
+ <input type="text" name="cpf2" mask="999.999.999-99" clean="false" ng-model="cpf2">
+
+
+ Numbers example
+
+
+ MASK: 123?4? RESTRICT: REJECT LIMIT: FALSE
+ <input type="text" name="optional" mask="123?4?" restrict="reject" limit="false" ng-model="optional">
+
+
+  MASK: 9 REPEAT: 5
+  <input type="text" name="repeat" mask="9" repeat="5" ng-model="repeat">
+
+
+  MASK: 99999
+  <input type="text" name="dontrepeat" mask="99999" ng-model="dontrepeat">
+
+
+  Default value example
+
+
+  MASK: 39/19/9999
+  <input type="text" name="dateDefault" mask="39/19/9999" ng-value="30/09/1986" ng-model="dateDefault">
+
+
+  MASK: 999.999.999-99 CLEAN: FALSE
+  <input type="text" name="cpfDefault" mask="999.999.999-99" clean="false" ng-value="a8799900105" ng-model="cpfDefault">
+
+
+  MASK: 9 REPEAT: 5
+  <input type="text" name="numberDefault" mask="9" repeat="5" ng-value="12349" ng-model="numberDefault">
+
+
+
+ $scope.addrole  = function() {
+            $scope.upload($scope.picFile);
+
+        var promise = SPORTS_SERVICE.changeImage($scope.picFile);
+        promise.then(function(result){
+
+            $scope.upload = function (file) {
+                Upload.upload({
+                    url: 'pri/sport/upload/image',
+                    data: {file: file}
+                }).then(function (resp) {
+                    console.log('Success img uploaded');
+                }, function (resp) {
+                    console.log('Error img uploaded');
+                }, function (evt) {});
+            };
+
+        }).catch(function(err){
+            console.error(err);
+        });
+
+    };

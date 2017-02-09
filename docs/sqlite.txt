@@ -1,0 +1,57 @@
+1..... with CMD
+
+            SQLite is an in-process library that implements a
+                           self-contained = no external dependencies,
+                           serverless = does not require a separate server process or system to operate,
+                           zero-configuration = no setup or administration needed,
+                           transactional SQL database engine = database is stored in a single cross-platform disk file
+
+
+
+                                    detail = database name
+                                    user = table name
+
+
+
+in your folder download sqlite3.exe then in cmd type
+
+    1. sqlite3 detail.db              creat database of name detail
+
+    2. sqlite>.databases            Once a database is created, you can check it in the list of databases
+
+    3. create table user(userid integer,name varchar(20),title varchar(10));     create talbe of coloum of userid, name & title
+
+    3.1 drop table user                  command used to remove a table definition
+
+    4. insert into user value<001,'Sunil','Developer'>;         enter data in the table
+
+    6. select * from user;
+
+    7. sqlite>.quit                 command to come out of the sqlite prompt
+
+    8. sqlite3 user.db .dump      command to export complete database in a text file as testDB.sql
+
+    ATTACH DTABASE:-  case when you have multiple databases available and you want to use any one of them at a time.
+                      SQLite ATTACH DTABASE statement is used to select a particular database
+                      ATTACH DATABASE 'DatabaseName' As 'Alias-Name';
+
+    9.  UPDATE user SET ADDRESS = 'Texas' WHERE userid = 6;
+
+    10. DELETE FROM user WHERE userid = 7
+
+    11.  SELECT * FROM user ORDER BY name ASC
+
+
+   12. .databases;
+
+   13.  to put table in proper formated way
+                 .header on
+                .mode column
+                select * from data;                      data table
+   14. .table;
+
+   15. sqlite> SELECT * FROM user WHERE AGE  LIKE '2%';                 age data start whith 2
+
+   16.
+
+

@@ -1,0 +1,59 @@
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav navbar-right" style="color: white;">
+            <li><a ui-sref="sports" ng-if="!login">SPORTS</a></li>
+            <li><a ui-sref="login" ng-if="login">LOGIN</a></li>
+            <li><a ng-if="!login" ng-click="logOut();">LOGOUT</a></li>
+        </ul>
+
+  </div>
+
+
+app.run(['$rootScope', '$state', '$stateParams','$location','$cookies','$window', function ($rootScope, $state, $stateParams, $location, $cookies, $window) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    console.log($state);
+
+    $rootScope.$on('$locationChangeStart', function (event ,next, current) {
+        var auth = $cookies.getObject("auth");
+        if(auth == undefined || auth == null){
+            $location.path('/login');
+        }
+    });
+}]);
+
+
+
+ $scope.responseData={};
+
+        var promise = SPORTS_SERVICE.loginData();
+        promise.then(function(result){
+            debugger;
+            $scope.responseData=SPORTS_SERVICE.responseData=result.data;
+
+            $cookies.putObject("auth",$scope.responseData.data.auth);
+            if($scope.responseData.message === "Success"){
+                $location.path('/sports');
+            }else {
+                $location.path('/login');
+
+            }
+
+
+
+app .directive('headerDirective',function($cookies,$location) {
+    return{
+        restrict:'AEC',
+        templateUrl:'views/navbar.html',
+        replace:'true',
+        link: function (scope,attr,elem) {
+                debugger;
+                scope.logOut = function () {
+                $cookies.remove("auth");
+                $location.path('/login');
+            }
+        }
+    };
+
+
+            });

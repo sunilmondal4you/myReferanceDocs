@@ -1,0 +1,20 @@
+.appearup,.appearleft{
+    visibility:hidden
+}
+
+
+$('.appearup').on('appear', function(event, $all_appeared_elements) {
+   $(this).css("visibility","visible");
+   $(this).addClass("animated fadeInUp");
+});
+
+$('.appearleft').on('appear', function(event, $all_appeared_elements) {
+    $(this).css("visibility","visible");
+    $(this).addClass("animated fadeInLeft");
+});
+
+$('.appearup,.appearleft').on('disappear', function (event, $all_disappeared_elements) {
+    console.log("disapperar called " + $(this));
+    $(this).removeClass("animated fadeInUp fadeInLeft");
+    $(this).css("visibility", "hidden");
+});

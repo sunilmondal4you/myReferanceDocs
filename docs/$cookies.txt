@@ -1,0 +1,25 @@
+<<<<<<<<<<  Get key and value from cookies    >>>>>>>>>>
+
+
+<<<<<<<<<<  Get key and value from cookies in object formate    >>>>>>>>>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<<<<<<<  Remove all data from cookies    >>>>>>>>>>
+
+ scope.logOut = function () {
+    var allCookies = $cookies.getAll();
+    for(var p in allCookies){
+        $cookies.remove(p);
+    }
+  }

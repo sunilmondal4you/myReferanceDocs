@@ -1,0 +1,12 @@
+npm init
+1. change "main": "index.js",    as     "main":"main.js or index.js"
+2.change  "test": "echo \"Error: no test specified\" && exit 1"
+                                 as
+           "start": "electron"
+
+
+npm install electron --save-dev
+
+npm install electron-packager -g
+
+electron-packager . --platform=win32 --arch*64

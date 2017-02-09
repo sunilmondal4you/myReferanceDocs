@@ -1,0 +1,57 @@
+<<<<<<<<<       Services        >>>>>>>>>
+
+var app = angular.module("app");
+
+app.service("SPORTS_SERVICE", ["$http", function($http){
+    var SERVER_ADDRESS = "http://192.168.1.5:3000";
+
+    /** ALL API LIST **/
+    this.API_LIST = {
+        "ALL_SPORTS" : SERVER_ADDRESS + "/pri/sport",
+        "LOGIN" : SERVER_ADDRESS + "/pub/login"
+    };
+
+    this.getAllSportsData = function(){
+        return $http.get(this.API_LIST.ALL_SPORTS);
+    };
+
+    /* POST EMAIL AND PASSWORD */
+
+
+    this.userSrvc = {};
+
+    this.loginData = function(){
+        debugger;
+        return $http.post(this.API_LIST.LOGIN,this.userSrvc);
+    };
+}]);
+
+
+
+<<<<<<<<<<      controller      >>>>>>>>>>
+
+ $scope.user={};
+    $scope.userSrvc={};
+
+    $scope.login=function () {
+        debugger;
+
+        $scope.userid="+91"+$scope.user.number;
+
+        var encodedpsw=$base64.encode($scope.user.password);
+        $scope.reencodedpsw=$base64.encode(encodedpsw);
+
+        $scope.userSrvc.mobile=$scope.userid;
+        $scope.userSrvc.password=$scope.reencodedpsw;
+
+        SPORTS_SERVICE.userSrvc=$scope.userSrvc;
+
+        var promise = SPORTS_SERVICE.loginData();
+        promise.then(function(result){
+            debugger;
+            console.log(result.data);
+
+        }).catch(function(err){
+            console.error(err);
+        });
+    };
